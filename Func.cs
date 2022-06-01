@@ -8,7 +8,7 @@ public class Func : MonoBehaviour
     [Header("Login")]
     public TMP_InputField loginUsername;
     public TMP_InputField loginPassword;
-    
+
     [Header("Register")]
     public TMP_InputField registerUsername;
     public TMP_InputField registerPassword;
@@ -34,17 +34,17 @@ public class Func : MonoBehaviour
         KeyAuthApp.login(loginUsername.text, loginPassword.text);
         if (KeyAuthApp.response.success)
         {
-            loginStatus.text = "Welcome " + loginUsername.text;
+            statusLbl.text = "Welcome " + loginUsername.text;
         }
         else
         {
-            loginStatus.text = "Failed";
+            statusLbl.text = "Failed";
         }
     }
-    
-     public void loginType()
+
+    public void registerType()
     {
-        KeyAuthApp.login(registerUsername.text, registerPassword.text, registerKey.text);
+        KeyAuthApp.register(registerUsername.text, registerPassword.text, registerKey.text);
         if (KeyAuthApp.response.success)
         {
             statusLbl.text = "Success, welcome " + registerUsername.text;
