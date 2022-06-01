@@ -5,9 +5,17 @@ using TMPro;
 
 public class Func : MonoBehaviour
 {
+    [Header("Login")]
     public TMP_InputField loginUsername;
     public TMP_InputField loginPassword;
-    public TMP_Text loginStatus;
+    
+    [Header("Register")]
+    public TMP_InputField registerUsername;
+    public TMP_InputField registerPassword;
+    public TMP_InputField registerKey;
+
+    [Header("Status")]
+    public TMP_Text statusLbl;
 
     private static api KeyAuthApp = new api(
     name: "",
@@ -31,6 +39,19 @@ public class Func : MonoBehaviour
         else
         {
             loginStatus.text = "Failed";
+        }
+    }
+    
+     public void loginType()
+    {
+        KeyAuthApp.login(registerUsername.text, registerPassword.text, registerKey.text);
+        if (KeyAuthApp.response.success)
+        {
+            statusLbl.text = "Success, welcome " + registerUsername.text;
+        }
+        else
+        {
+            statusLbl.text = "Failed";
         }
     }
 }
